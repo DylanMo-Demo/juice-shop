@@ -38,7 +38,6 @@ jobs:
           cd frontend
           npm install --ignore-scripts --legacy-peer-deps
       - name: "Publish to Artifactory"
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
         run: npm publish --access public
