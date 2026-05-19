@@ -21,7 +21,7 @@ env:
   NODE_DEFAULT_VERSION: 22
   NODE_OPTIONS: "--max_old_space_size=4096"
 jobs:
-  lint:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
       - name: "Check out Git repository"
