@@ -37,9 +37,9 @@ jobs:
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
         run: |
-          boost npm install --ignore-scripts
+          npm install --ignore-scripts
           cd frontend
-          boost npm install --ignore-scripts --legacy-peer-deps
+          npm install --ignore-scripts --legacy-peer-deps
       - name: "Publish to Artifactory"
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
