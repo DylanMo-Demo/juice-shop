@@ -24,6 +24,7 @@ jobs:
   build-and-publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: jfrog/boost@v0
       - name: "Check out Git repository"
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 #v4.2.2
       - name: "Use Node.js 22"
@@ -34,9 +35,9 @@ jobs:
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
         run: |
-          npm install --ignore-scripts
+          boost npm install --ignore-scripts
           cd frontend
-          npm install --ignore-scripts --legacy-peer-deps
+          boost npm install --ignore-scripts --legacy-peer-deps
       - name: "Publish to Artifactory"
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
