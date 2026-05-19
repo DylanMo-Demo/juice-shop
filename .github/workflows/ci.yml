@@ -37,11 +37,13 @@ jobs:
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
         run: |
-          npm install --ignore-scripts
+          npm install --ignore-scripts --no-audit --no-fund --loglevel=error
           cd frontend
-          npm install --ignore-scripts --legacy-peer-deps
+          npm install --ignore-scripts --legacy-peer-deps --no-audit --no-fund --loglevel=error
       - name: "Publish to Artifactory"
         env:
           JF_TOKEN: ${{ secrets.JF_TOKEN }}
-        run: npm publish --access public
+        run: |
+          npm version "18.0.0-SNAPSHOT-$(git rev-parse --short HEAD)" --no-git-tag-version --allow-same-version
+          npm publish --access public
 
